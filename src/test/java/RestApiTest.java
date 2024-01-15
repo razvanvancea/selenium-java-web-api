@@ -4,8 +4,6 @@ import static org.hamcrest.Matchers.*;
 
 import io.restassured.response.Response;
 
-// neaparat ma asigur ca exista cele 3 importuri de mai sus
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
