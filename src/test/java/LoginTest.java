@@ -1,9 +1,11 @@
 
+import Pages.BaseTest;
+import Pages.LoginPage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
     LoginPage loginPage;
 
 @Test
