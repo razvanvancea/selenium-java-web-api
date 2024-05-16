@@ -27,7 +27,7 @@ public class RestApiTest {
         String data = response.asString();
 
         System.out.println("The response time is: "+ responseTime);
-        System.out.println("The response data is: "+ data);
+//        System.out.println("The response data is: "+ data);
         Assert.assertTrue(data.contains("title"));
     }
 

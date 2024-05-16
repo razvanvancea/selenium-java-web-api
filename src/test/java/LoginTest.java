@@ -2,6 +2,7 @@
 import Pages.BaseTest;
 import Pages.LoginPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -37,5 +38,15 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(driver.findElement(By.cssSelector("#logout")).isDisplayed());
     }
 
-
+    @Test
+    public void fileUploadTest() throws InterruptedException {
+        driver.findElement(By.cssSelector("#file-upload-item")).click();
+        WebElement fileInput = driver.findElement(By.cssSelector("#file_upload"));
+        fileInput.sendKeys(System.getProperty("user.dir")+"/src/test/java/Pages/BaseTest.java");
+        driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
+        Assert.assertTrue(driver.findElement(By.cssSelector("#file_upload_response")).isDisplayed());
+        String actualString = driver.findElement(By.cssSelector("#file_upload_response")).getText();
+        Assert.assertTrue(actualString.contains("You have successfully uploaded"));
+        Thread.sleep(12000);
+    }
 }
