@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.Select;
 
 public class LoginTest extends BaseTest {
     LoginPage loginPage;
@@ -47,6 +48,25 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(driver.findElement(By.cssSelector("#file_upload_response")).isDisplayed());
         String actualString = driver.findElement(By.cssSelector("#file_upload_response")).getText();
         Assert.assertTrue(actualString.contains("You have successfully uploaded"));
-        Thread.sleep(12000);
+//        Thread.sleep(12000);
+    }
+
+    @Test
+    public void dropdownTest() throws InterruptedException {
+        driver.findElement(By.cssSelector("#bugs-form")).click();
+        Select dropdown = new Select(driver.findElement(By.cssSelector("#countries_dropdown_menu")));
+        dropdown.selectByVisibleText("Austria");
+        driver.findElement(By.cssSelector("#password")).sendKeys("qweqwe");
+        driver.findElement(By.cssSelector("#phone")).sendKeys("0725237165");
+        driver.findElement(By.cssSelector("#emailAddress")).sendKeys("qweqwe@qwe.com");
+        driver.findElement(By.cssSelector("#registerBtn")).click();
+        String actualCountryText = driver.findElement(By.cssSelector("#results-section #country")).getText();
+
+        Assert.assertTrue(actualCountryText.contains("Austria"));
+//
+//          dropdown.selectByValue("prog");
+//        dropdown.selectByIndex(1);
+
+        Thread.sleep(5000);
     }
 }
